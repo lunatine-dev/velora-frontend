@@ -1,38 +1,28 @@
-# sv
+# velora-frontend
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+[![Built with SvelteKit](https://img.shields.io/badge/built%20with-SvelteKit-ff3e00?style=flat&logo=svelte&logoColor=white)](https://kit.svelte.dev)
+[![License: MIT](https://img.shields.io/badge/license-MIT-7c5df8?style=flat)](./LICENSE)
+[![Deploy: Vercel](https://img.shields.io/badge/deploy-Vercel-000?style=flat&logo=vercel)](https://vercel.com)
+[![Status: Personal Project](https://img.shields.io/badge/status-personal-18c5d9?style=flat)](https://lunatine.dev)
 
-## Creating a project
+🌌 **Velora** is the main frontend for [lunatine.dev](https://lunatine.dev), built with [SvelteKit](https://kit.svelte.dev).
 
-If you're seeing this, you've probably already done this step. Congrats!
+---
+
+## 🛠️ Tech Stack
+
+-   **SvelteKit**
+-   **JavaScript**
+-   **TailwindCSS**
+-   **Vite**
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+git clone https://github.com/lunatine-dev/velora-frontend.git
+cd velora-frontend
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
