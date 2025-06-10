@@ -1,1 +1,56 @@
-@import 'tailwindcss';
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Quicksand&family=Share+Tech+Mono&display=swap");
+@import "tailwindcss";
+
+/* LIFE IS STRANGE FONTS */
+@font-face {
+    font-family: "Dudu";
+    src: url("/fonts/Dudu_Calligraphy.ttf");
+}
+@font-face {
+    font-family: "whatnot";
+    src: url("/fonts/whatnot.ttf");
+}
+@font-face {
+    font-family: "HelvetiHand";
+    src: url("/fonts/HelvetiHand.ttf");
+}
+/* END LIFE IS STRANGE FONTS */
+
+/* PORTAL FONTS */
+@font-face {
+    font-family: "Portal";
+    src: url("/fonts/DIN.otf");
+}
+/* END PORTAL FONTS */
+
+/* CYBERPUNK FONTS */
+@font-face {
+    font-family: "Cyberpunk";
+    src: url("/fonts/Cyberpunk.ttf");
+}
+@font-face {
+    font-family: Cyber;
+    src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
+    font-display: swap;
+}
+/* END CYBERPUNK FONTS */
+
+html[data-theme="portal"] {
+    font-family: "Portal", sans-serif;
+}
+
+html[data-theme="cyberpunk"] {
+    font-family: "Cyber", sans-serif;
+}
+
+html[data-theme="lis"] {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "whatnot", sans-serif;
+    }
+    font-family: "HelvetiHand", sans-serif;
+}
