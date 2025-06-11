@@ -31,7 +31,6 @@
 <div class="relative z-10 min-h-screen flex items-center justify-center">
     <div class="text-center">
         <h1 class="text-white text-4xl font-bold">lunatine.dev</h1>
-        <a href="/test">Test</a>
     </div>
 </div>
 

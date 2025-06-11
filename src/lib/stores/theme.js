@@ -8,7 +8,9 @@ export const videos = {
     lis: "lifeisstrange.mp4",
 };
 
-const initial = browser ? localStorage.getItem("theme") ?? "portal" : "portal";
+const initial = browser
+    ? localStorage.getItem("theme") ?? "cyberpunk"
+    : "cyberpunk";
 
 export const theme = writable(initial);
 

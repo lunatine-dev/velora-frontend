@@ -35,15 +35,32 @@
 }
 /* END CYBERPUNK FONTS */
 
+.button {
+    background-color: var(--color-blue-600);
+
+    &:hover {
+        background-color: var(--color-blue-500);
+    }
+}
+
 html[data-theme="portal"] {
     font-family: "Portal", sans-serif;
     --colors-accent: #00a2ff;
 
     --colors-secondary: var(--color-slate-800);
+
+    #nprogress .bar {
+        background: var(--colors-accent);
+    }
+    #nprogress .spinner-icon {
+        border-top-color: var(--colors-accent); /* accent color */
+        border-left-color: var(--colors-accent);
+    }
 }
 
 html[data-theme="cyberpunk"] {
     font-family: "Cyber", sans-serif;
+    --colors-bg--300: #1e181e;
     --colors-bg--300: #1e181e;
     --colors-bg--500: #191a1e;
     --colors-primary--200: #f4908b;
@@ -83,6 +100,42 @@ html[data-theme="cyberpunk"] {
     --colors-primary: #131417;
     --colors-secondary: #1e181e;
     --colors-accent: #e8615a;
+
+    #nprogress .bar {
+        background: var(--colors-accent);
+    }
+    #nprogress .spinner-icon {
+        border-top-color: var(--colors-accent); /* accent color */
+        border-left-color: var(--colors-accent);
+    }
+
+    .button {
+        position: relative;
+        background-color: var(--colors-bg--300);
+
+        border: 1px solid var(--colors-primary--600-opacity) !important;
+        clip-path: var(--ui-notch-path) !important;
+        border-radius: 0 !important;
+        border: 1px solid var(--colors-primary--600-opacity) !important;
+        clip-path: var(--ui-notch-path) !important;
+        &:before {
+            background-color: var(--colors-primary--600-opacity);
+            bottom: 5px;
+            content: "";
+            display: block;
+            height: 2px; /* bigger to compensate transform */
+            position: absolute;
+            right: -6px;
+            top: auto;
+            transform: rotate(-45deg);
+            width: var(--ui-notch-hypotenuse);
+            z-index: 1000000;
+        }
+
+        &:hover {
+            background-color: var(--colors-primary--600);
+        }
+    }
 }
 
 html[data-theme="lis"] {
@@ -99,4 +152,12 @@ html[data-theme="lis"] {
     --colors-primary: #131417;
     --colors-secondary: var(--color-slate-800);
     --colors-accent: #36bbd9;
+
+    #nprogress .bar {
+        background: var(--colors-accent);
+    }
+    #nprogress .spinner-icon {
+        border-top-color: var(--colors-accent); /* accent color */
+        border-left-color: var(--colors-accent);
+    }
 }

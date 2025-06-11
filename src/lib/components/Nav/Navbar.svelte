@@ -2,8 +2,10 @@
     import UserDropdown from "./UserDropdown.svelte";
     import { theme } from "$lib/stores/theme";
     import Menu from "~icons/mdi/menu";
+    import Discord from "~icons/ic/baseline-discord";
+    import { routes } from "$lib/constants/navigation";
 
-    let { isLoggedIn = true, pathname } = $props();
+    let { isLoggedIn = false, pathname } = $props();
 
     let currentPath = $derived(pathname);
     let isTransparent = $derived(pathname === "/");
@@ -28,21 +30,23 @@
                 <div
                     class="hidden md:flex gap-6 text-slate-700 dark:text-slate-300"
                 >
-                    <a
-                        href="/"
-                        class={`${currentPath === "/" ? "active" : ""} hover:text-white`}
-                        >Home</a
-                    >
-                    <a
-                        href="/test"
-                        class={`${currentPath === "/test" ? "active" : ""}`}
-                        >Test</a
-                    >
-                    <a
-                        href="/test2"
-                        class={`${currentPath === "/test2" ? "active" : ""}`}
-                        >Test2</a
-                    >
+                    {#each routes as route}
+                        {#if !route.hidden}
+                            <a
+                                href={route.href}
+                                class={`${currentPath === route.href ? "active" : ""} flex items-center`}
+                            >
+                                {#if route.icon}
+                                    <route.icon
+                                        class={route.iconOnly ? "" : "mr-2"}
+                                    />
+                                {/if}
+                                {#if !route.iconOnly}
+                                    {route.name}
+                                {/if}
+                            </a>
+                        {/if}
+                    {/each}
                 </div>
 
                 <!-- Right side: Auth buttons or user menu -->
@@ -52,16 +56,11 @@
                         <UserDropdown {isTransparent} />
                     {:else}
                         <a
-                            href="/login"
-                            class="text-slate-700 dark:text-slate-200 hover:underline"
-                        >
-                            Log in
-                        </a>
-                        <a
                             href="/signup"
-                            class="px-3 py-1.5 rounded-md bg-[#6165ec] text-white hover:bg-[#4f52d3] transition"
+                            class="px-3 button py-1.5 rounded-md bg-[#6165ec] text-white hover:bg-[#4f52d3] transition flex items-center"
                         >
-                            Sign up
+                            <Discord class="mr-1" />
+                            Login with Discord
                         </a>
                     {/if}
                 </div>
@@ -78,9 +77,18 @@
         nav {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-            .active {
-                color: var(--colors-accent);
-                border-bottom: 1px solid var(--colors-accent);
+            a {
+                border: 1px solid transparent;
+                transition:
+                    color 250ms,
+                    border-color,
+                    250ms,
+                    border-width 250ms;
+                &.active,
+                &:hover {
+                    color: var(--colors-accent);
+                    border-bottom: 1px solid var(--colors-accent);
+                }
             }
         }
     }
