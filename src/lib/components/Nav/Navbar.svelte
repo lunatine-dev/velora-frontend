@@ -57,7 +57,7 @@
                     {:else}
                         <a
                             href="/signup"
-                            class="px-3 button py-1.5 rounded-md bg-[#6165ec] text-white hover:bg-[#4f52d3] transition flex items-center"
+                            class="px-3 py-1.5 rounded-md bg-[#6165ec] text-white hover:bg-[#4f52d3] transition flex items-center"
                         >
                             <Discord class="mr-1" />
                             Login with Discord
