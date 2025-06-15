@@ -13,7 +13,7 @@
     let mounted = $state(false);
     let eggs = $state([]);
     let hue = $state(0);
-    let objectFit = $state("cover");
+    let css = $state([]);
 
     let keyBuffer = "";
     let maxBuffer = 32;
@@ -43,7 +43,7 @@
 
             if (match?.action === "video") {
                 eggSrc = `${PUBLIC_API_URL.replace("/v1", "")}${match.params.href}`;
-                objectFit = match.params.objectFit || "cover";
+                css = match.params.css || [];
                 keyBuffer = "";
             }
         }
@@ -88,7 +88,7 @@
             loop
             playsinline
             class="fixed top-0 left-0 w-full h-full z-[-1] bg-black"
-            style="filter: hue-rotate({hue}deg) brightness(0.5);object-fit:{objectFit};"
+            style="filter: hue-rotate({hue}deg) brightness(0.5);{css.join(';')}"
             onloadstart={function () {
                 this.volume = 0.45;
             }}
