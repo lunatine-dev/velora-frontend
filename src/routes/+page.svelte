@@ -13,7 +13,7 @@
     let mounted = $state(false);
     let eggs = $state([]);
     let hue = $state(0);
-    let css = $state([]);
+    let css = $state(["object-fit: cover;"]);
 
     let keyBuffer = "";
     let maxBuffer = 32;
@@ -43,7 +43,7 @@
 
             if (match?.action === "video") {
                 eggSrc = `${PUBLIC_API_URL.replace("/v1", "")}${match.params.href}`;
-                css = match.params.css || [];
+                css = match.params.css || ["object-fit: cover;"];
                 keyBuffer = "";
             }
         }
