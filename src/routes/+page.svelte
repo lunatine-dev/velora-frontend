@@ -85,7 +85,7 @@
             autoplay
             loop
             playsinline
-            class="fixed top-0 left-0 w-full h-full object-cover z-[-1] bg-black"
+            class="fixed top-0 left-0 w-full h-full object-contain z-[-1] bg-black"
             style="filter: hue-rotate({hue}deg) brightness(0.5);"
             onloadstart={function () {
                 this.volume = 0.45;
