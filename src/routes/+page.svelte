@@ -74,6 +74,7 @@
             loop
             playsinline
             class="fixed top-0 left-0 w-full h-full object-cover z-[-1] blur-sm bg-black"
+            preload="none"
         >
             {#if mounted}
                 <source src={videoSrc} type="video/mp4" />
