@@ -10,11 +10,6 @@ export const routes = [
         icon: Home,
     },
     {
-        name: "Projects",
-        href: "/test",
-        icon: Projects,
-    },
-    {
         name: "UI",
         href: "/ui",
         icon: UI,

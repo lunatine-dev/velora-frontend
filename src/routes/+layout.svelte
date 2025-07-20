@@ -27,7 +27,7 @@
 {#if !page.error}
     <Navbar pathname={page.url.pathname} />
 {/if}
-<main>
+<main class="w-full">
     {@render children()}
 </main>
 <footer></footer>

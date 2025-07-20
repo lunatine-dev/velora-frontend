@@ -35,6 +35,7 @@
                             <a
                                 href={route.href}
                                 class={`${currentPath === route.href ? "active" : ""} flex items-center`}
+                                aria-label={route.name}
                             >
                                 {#if route.icon}
                                     <route.icon

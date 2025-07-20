@@ -50,15 +50,62 @@
 html[data-theme="portal"] {
     font-family: "Portal", sans-serif;
     --colors-accent: #00a2ff;
-
     --colors-secondary: var(--color-slate-800);
 
     #nprogress .bar {
         background: var(--colors-accent);
     }
     #nprogress .spinner-icon {
-        border-top-color: var(--colors-accent); /* accent color */
+        border-top-color: var(--colors-accent);
         border-left-color: var(--colors-accent);
+    }
+
+    .card,
+    .box {
+        position: relative;
+        background: var(--color-slate-900); /* very dark blue-black */
+        color: #c0d4f7;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 2px solid var(--colors-accent);
+    }
+    /* Blue and Orange top/bottom accent lines */
+    .card-header {
+        font-weight: 700;
+        font-size: 1.3rem;
+        border-bottom: 2px solid #00a2ff;
+        padding-bottom: 0.5em;
+        margin-bottom: 1em;
+        color: #0099ff;
+    }
+
+    .card-footer {
+        border-top: 2px solid #ff6600;
+        padding-top: 0.5em;
+        margin-top: 1em;
+        color: #cc8a3d;
+    }
+
+    .card-body {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    /* Subtle animated glow pulse */
+    @keyframes portalPulse {
+        0%,
+        100% {
+            box-shadow: inset 0 0 14px 2px rgba(0, 162, 255, 0.7),
+                inset 0 0 12px 2px rgba(255, 102, 0);
+        }
+        50% {
+            box-shadow: inset 0 0 18px 3px rgba(0, 162, 255, 0.7),
+                inset 0 0 16px 3px rgba(255, 102, 0, 0);
+        }
+    }
+
+    .card {
+        animation: portalPulse 4s ease-in-out infinite;
     }
 }
 
@@ -116,8 +163,6 @@ html[data-theme="cyberpunk"] {
     .button {
         position: relative;
         background-color: var(--colors-bg--300);
-
-        border: 1px solid var(--colors-primary--600-opacity) !important;
         clip-path: var(--ui-notch-path) !important;
         border-radius: 0 !important;
         border: 1px solid var(--colors-primary--600-opacity) !important;
@@ -140,6 +185,42 @@ html[data-theme="cyberpunk"] {
             background-color: var(--colors-primary--600);
         }
     }
+
+    .box,
+    .card {
+        position: relative;
+
+        background-color: var(--colors-bg--300);
+
+        clip-path: var(--ui-notch-path) !important;
+        border-radius: 0 !important;
+        border: 1px solid var(--colors-primary--600-opacity) !important;
+
+        &:before {
+            background-color: var(--colors-primary--600-opacity);
+            bottom: 5px;
+            content: "";
+            display: block;
+            height: 2px; /* bigger to compensate transform */
+            position: absolute;
+            right: -6px;
+            top: auto;
+            transform: rotate(-45deg);
+            width: var(--ui-notch-hypotenuse);
+            z-index: 1000000;
+        }
+    }
+
+    .card .card-header {
+        border-bottom: 1px solid var(--colors-primary--600-opacity) !important;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.25em;
+    }
+    .card .card-footer {
+        border-top: 1px solid var(--colors-primary--600-opacity) !important;
+        margin-top: 0.5em;
+        padding-top: 0.25em;
+    }
 }
 
 html[data-theme="lis"] {
@@ -151,17 +232,74 @@ html[data-theme="lis"] {
     h6 {
         font-family: "whatnot", sans-serif;
     }
-    font-family: "HelvetiHand", sans-serif;
-
+    font-family: "HelvetiHand", cursive;
     --colors-primary: #131417;
     --colors-secondary: var(--color-slate-800);
     --colors-accent: #36bbd9;
 
-    #nprogress .bar {
-        background: var(--colors-accent);
+    .card,
+    .box {
+        position: relative;
+        background-color: #fbf2d9; /* softer aged paper */
+        background-size: cover;
+        color: #2e2e2e;
+        padding: 1.5rem;
+        border: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+            inset 0 0 2px rgba(0, 0, 0, 0.05);
+
+        clip-path: polygon(
+            2% 4%,
+            8% 2%,
+            15% 6%,
+            23% 3%,
+            30% 7%,
+            37% 4%,
+            45% 9%,
+            53% 5%,
+            60% 8%,
+            68% 3%,
+            75% 7%,
+            83% 4%,
+            91% 6%,
+            98% 2%,
+            100% 10%,
+            98% 92%,
+            92% 95%,
+            85% 91%,
+            78% 95%,
+            70% 90%,
+            62% 94%,
+            55% 91%,
+            48% 95%,
+            40% 90%,
+            33% 94%,
+            25% 91%,
+            18% 95%,
+            10% 92%,
+            3% 96%,
+            0% 90%
+        );
     }
-    #nprogress .spinner-icon {
-        border-top-color: var(--colors-accent); /* accent color */
-        border-left-color: var(--colors-accent);
+
+    .card-header {
+        font-weight: bold;
+        font-size: 1.25rem;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.25em;
+        border-bottom: 1px dashed #a38267;
+        color: #3f3f3f;
+        font-family: "whatnot", sans-serif;
+    }
+    .card-body {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    .card-footer {
+        margin-top: 0.75em;
+        padding-top: 0.5em;
+        border-top: 1px dashed #a38267;
+        font-size: 0.85rem;
+        color: #6a6a6a;
     }
 }
