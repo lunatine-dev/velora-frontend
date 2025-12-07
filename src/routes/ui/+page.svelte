@@ -14,10 +14,9 @@
                 <span class="text-2xl">Header</span>
             {/snippet}
             <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam
-                et debitis laborum commodi ducimus. Enim tenetur vero nulla
-                earum hic distinctio sapiente provident debitis inventore,
-                cupiditate consequuntur odit corporis aspernatur?
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam et debitis laborum commodi ducimus.
+                Enim tenetur vero nulla earum hic distinctio sapiente provident debitis inventore, cupiditate
+                consequuntur odit corporis aspernatur?
             </p>
             {#snippet footer()}
                 <span class="text-gray-500">Footer</span>
