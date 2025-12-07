@@ -2,16 +2,17 @@
     import { theme, videos } from "$lib/stores/theme";
     import { decryptPayload } from "$lib/utils/decrypt";
     import { PUBLIC_API_URL } from "$env/static/public";
-    import ThemeSwitcher from "$lib/components/ThemeSwticher/ThemeSwitcher.svelte";
+    import Window from "$lib/components/Window.svelte";
+    import Phone from "$lib/components/Phone.svelte";
     import { onMount } from "svelte";
 
     //icons
-    import Discord from "~icons/ic/baseline-discord";
 
     let videoSrc = $derived(`/videos/${videos[$theme]}`);
     let eggSrc = $state(null);
     let mounted = $state(false);
     let eggs = $state([]);
+    let components = $state([]);
     let hue = $state(0);
     let css = $state(["object-fit: cover;"]);
 
@@ -22,29 +23,29 @@
     const fetchEggs = async () => {
         const response = await fetch(PUBLIC_API_URL + "/internal/config");
         const data = await response.json();
-        const easterEggs = await decryptPayload(data);
-
-        eggs = easterEggs;
+        eggs = await decryptPayload(data);
     };
 
     const handleKeyEvent = (e) => {
         if (e.key === "Escape") {
             eggSrc = null;
             keyBuffer = "";
+            components = [];
             return;
         }
 
         if (e.key.length === 1) {
             keyBuffer = (keyBuffer + e.key.toLowerCase()).slice(-maxBuffer);
 
-            const match = eggs.find((egg) =>
-                keyBuffer.endsWith(egg.trigger.toLowerCase())
-            );
+            const match = eggs.find((egg) => keyBuffer.endsWith(egg.trigger.toLowerCase()));
 
             if (match?.action === "video") {
-                eggSrc = `${PUBLIC_API_URL.replace("/v1", "")}${match.params.href}`;
+                eggSrc = match.params.href;
                 css = match.params.css || ["object-fit: cover;"];
                 keyBuffer = "";
+            } else if (match?.action === "component") {
+                //trigger a component in svelte to "pop in", kind of like a Windows app that you can drag and close, etc
+                components.push(match.params);
             }
         }
     };
@@ -100,6 +101,21 @@
         </video>
     {/key}
 {/if}
+
+{#each components as component}
+    {#if !component?.vanish ?? false}
+        {#if component.type === "phone"}
+            <Phone src={component.data} type={component.dataType} />
+        {:else if component.type === "window"}
+            <Window
+                src={component.data}
+                type={component.dataType}
+                title={component?.title || "New Window"}
+                widthClass="h-[20vw]"
+            />
+        {/if}
+    {/if}
+{/each}
 
 <div class="relative z-10 min-h-screen flex items-center justify-center">
     <div class="text-center">
